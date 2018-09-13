@@ -1,4 +1,5 @@
 from random import randint
+from inventory import item_after_combat
 
 
 def calculate_crit(attacker):
@@ -31,8 +32,6 @@ def combat_round(attacker, defender):
         print(attacker["NAME"], "còn", attacker["HP"], "HP")
 
 
-
-
 def combat_full(player, opponent):
     while True:
         combat_round(player, opponent)
@@ -46,7 +45,8 @@ def combat_full(player, opponent):
         print("Bạn muốn:")
         print("1. Đánh tiếp")
         print("2. Chạy")
-        print("3. Tự động đánh")
+        print("3. Sử dụng đồ")
+        print("4. Tự động đánh")
         option = input(">>> ")
         if option == "1":
             print("Nhào zô")
@@ -60,42 +60,8 @@ def combat_full(player, opponent):
         elif option == "3":
             print("Bài tập về nhà, hihi")
 
-#
-# player = {
-#     "NAME": "MAD",
-#     "CLASS": "TEACHER",
-#     "HP": 60,
-#     "STR": 7,
-#     "DEF": 10,
-#     "AGI": 1,
-#     "LVL": 1,
-#     "LUCK": 4,
-# }
-#
-# orc = {
-#     "NAME": "SMALL ORC",
-#     "CLASS": "ORC",
-#     "STR": 1,
-#     "DEF": 2,
-#     "HP": 6,
-#     "LUCK": 2,
-# }
-#
-#
-# while True:
-#     combat(player, orc)
-#
-#     if orc["HP"] <= 0 or player["HP"] <= 0:
-#         break
-#
-#     combat(orc, player)
-#
-#     if orc["HP"] <= 0 or player["HP"] <= 0:
-#         break
-#
-# if player["HP"] <= 0:
-#     print("Player lost")
-# else:
-#     print("Orc lost")
-
-# combat(player, orc)
+    if player["HP"] <= 0:
+        print("Bạn đã thua rồi, huhu")
+    else:
+        print(opponent["NAME"], "đã bị tiêu diệt")
+        item_after_combat()
